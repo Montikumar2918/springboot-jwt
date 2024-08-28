@@ -2,6 +2,7 @@ package com.javatechie.controller;
 
 import com.javatechie.dto.AuthRequest;
 import com.javatechie.dto.Product;
+import com.javatechie.entity.ProductEntity;
 import com.javatechie.entity.UserInfo;
 import com.javatechie.service.JwtService;
 import com.javatechie.service.ProductService;
@@ -58,7 +59,11 @@ public class ProductController {
         } else {
             throw new UsernameNotFoundException("invalid user request !");
         }
-
-
     }
+
+    @PostMapping
+    public ProductEntity createProduct(@RequestBody ProductEntity product) {
+        return service.saveProduct(product);
+    }
+
 }

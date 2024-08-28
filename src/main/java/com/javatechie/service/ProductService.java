@@ -1,7 +1,9 @@
 package com.javatechie.service;
 
 import com.javatechie.dto.Product;
+import com.javatechie.entity.ProductEntity;
 import com.javatechie.entity.UserInfo;
+import com.javatechie.repository.ProductRepository;
 import com.javatechie.repository.UserInfoRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class ProductService {
 
     @Autowired
     private UserInfoRepository repository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -53,4 +58,9 @@ public class ProductService {
         repository.save(userInfo);
         return "user added to system ";
     }
+
+    public ProductEntity saveProduct(ProductEntity product) {
+        return productRepository.save(product);
+    }
+
 }
